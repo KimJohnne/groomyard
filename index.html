@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Groomyard Barbershop — Dennis Pritt Road, Nairobi</title>
+<meta name="description" content="Groomyard Barbershop, Dennis Pritt Road, Nairobi. Premium barbershop for fades, beard trims, hot towel shaves, and massage. Rated 4.7 stars. Book your cut today."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --charcoal:  #1c1c1c;
+  --charcoal-2:#242424;
+  --charcoal-3:#2e2e2e;
+  --steel:     #3a3a3a;
+  --copper:    #b87333;
+  --copper-l:  #d4904a;
+  --copper-d:  #8a5520;
+  --cream:     #f5f0e8;
+  --cream-2:   #ede7dc;
+  --smoke:     #8a8a8a;
+  --light:     #c8c0b4;
+  --border:    rgba(184,115,51,.15);
+  --font-h:    'Bebas Neue', sans-serif;
+  --font-b:    'Barlow', sans-serif;
+  --ease:      cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-b);background:var(--charcoal);color:var(--cream);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--copper);color:#fff}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:var(--copper);border-radius:2px}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.container{max-width:1120px;margin:0 auto;padding:0 36px}
+.sp{padding:96px 0}
+.fu{opacity:0;transform:translateY(20px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.fu.vis{opacity:1;transform:translateY(0)}
+.fu.d1{transition-delay:.1s}.fu.d2{transition-delay:.2s}.fu.d3{transition-delay:.3s}
+
+.btn-copper{display:inline-flex;align-items:center;gap:8px;background:var(--copper);color:#fff;padding:13px 28px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;transition:background .2s,transform .2s;text-decoration:none}
+.btn-copper:hover{background:var(--copper-d);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--copper);border:1.5px solid var(--copper);padding:12px 26px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;text-decoration:none}
+.btn-outline:hover{background:var(--copper);color:#fff}
+.btn-outline-cream{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);border:1.5px solid rgba(245,240,232,.25);padding:12px 26px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .2s;text-decoration:none}
+.btn-outline-cream:hover{border-color:var(--cream);background:rgba(245,240,232,.08)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:300;transition:background .3s,border-color .3s}
+nav.solid{background:rgba(28,28,28,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,115,51,.12)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{cursor:pointer;text-decoration:none}
+.nl-main{font-family:var(--font-h);font-size:24px;color:var(--cream);letter-spacing:3px;line-height:1}
+.nl-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-top:3px}
+.nav-links{display:flex;align-items:center;list-style:none}
+.nav-links a{padding:0 16px;height:68px;display:flex;align-items:center;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(245,240,232,.5);text-decoration:none;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--copper);border-bottom-color:var(--copper)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hbg span{display:block;width:22px;height:2px;background:var(--cream);border-radius:1px}
+
+#app{transition:opacity .2s}
+#app.fading{opacity:0}
+
+footer{background:var(--charcoal-2);padding:64px 0 0;border-top:1px solid rgba(184,115,51,.1)}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px}
+.ft-logo-name{font-family:var(--font-h);font-size:26px;color:var(--cream);letter-spacing:3px}
+.ft-logo-tag{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-top:4px}
+.ft-desc{color:rgba(245,240,232,.4);font-size:13px;font-weight:300;line-height:1.8;margin-top:14px;max-width:240px}
+.ft-col h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper);margin-bottom:16px;font-weight:700}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a,.ft-col li{color:rgba(245,240,232,.4);font-size:13px;font-weight:300;text-decoration:none;cursor:pointer;transition:color .2s}
+.ft-col a:hover{color:var(--copper)}
+.ft-bot{border-top:1px solid rgba(184,115,51,.08);padding:20px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-bot p{color:rgba(245,240,232,.2);font-size:12px}
+.ft-credit{color:rgba(184,115,51,.3)!important}
+
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.fg label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--smoke)}
+.fg input,.fg select,.fg textarea{background:var(--charcoal-3);border:1px solid rgba(184,115,51,.15);color:var(--cream);padding:12px 14px;font-family:var(--font-b);font-size:14px;font-weight:400;border-radius:2px;outline:none;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--copper)}
+.fg select option{background:var(--charcoal-3)}
+.fg textarea{resize:vertical}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+@media(max-width:1024px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){
+  .nav-links,.nav-bk{display:none}
+  .hbg{display:flex}
+  nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--charcoal);border-bottom:1px solid rgba(184,115,51,.1);padding:8px 0;gap:0}
+  nav.open .nav-links a{height:46px;padding-left:24px;color:rgba(245,240,232,.6);border-bottom:1px solid rgba(184,115,51,.06)}
+  .fr2{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-inner">
+    <div class="nav-logo" onclick="go('home')">
+      <div class="nl-main">GROOMYARD</div>
+      <div class="nl-sub">Barbershop · Nairobi</div>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="go('home')">Home</a></li>
+      <li><a onclick="go('services')">Services</a></li>
+      <li><a onclick="go('contact')">Book a Cut</a></li>
+    </ul>
+    <button class="btn-copper nav-bk" onclick="go('contact')" style="font-size:11px;padding:10px 20px">Book Now</button>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div id="app"></div>
+
+<!-- ═══ HOME ═══ -->
+<template id="t-home">
+<style>
+.hero{height:100vh;min-height:680px;position:relative;overflow:hidden;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1800&q=85&fit=crop') center/cover no-repeat}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(28,28,28,.95) 0%,rgba(28,28,28,.7) 50%,rgba(28,28,28,.2) 100%)}
+.hero-con{position:relative;z-index:2;padding:120px 0 80px;width:100%}
+.hero-inner{max-width:640px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,115,51,.4);padding:6px 16px;border-radius:2px;margin-bottom:28px}
+.htag-dot{width:6px;height:6px;border-radius:50%;background:var(--copper);animation:cp 2s infinite}
+@keyframes cp{0%,100%{opacity:1}50%{opacity:.4}}
+.htag-txt{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--copper)}
+.hero h1{font-family:var(--font-h);font-size:clamp(64px,9vw,130px);color:var(--cream);line-height:.88;letter-spacing:2px;margin-bottom:20px}
+.hero h1 .hl{color:var(--copper)}
+.hero-sub{color:rgba(245,240,232,.6);font-size:16px;font-weight:300;line-height:1.85;max-width:420px;margin-bottom:36px}
+.hero-acts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.hero-creds{display:flex;gap:32px;border-top:1px solid rgba(184,115,51,.15);padding-top:24px}
+.hc-n{font-family:var(--font-h);font-size:32px;color:var(--copper);line-height:1;letter-spacing:1px}
+.hc-l{font-size:10px;color:rgba(245,240,232,.4);font-weight:300;margin-top:4px;letter-spacing:1px}
+
+/* services strip */
+.svc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(184,115,51,.12)}
+.ss-item{background:var(--charcoal-2);padding:28px 24px;border-top:2px solid transparent;transition:all .25s;cursor:pointer}
+.ss-item:hover{background:var(--charcoal-3);border-top-color:var(--copper)}
+.ss-icon{font-size:28px;margin-bottom:12px}
+.ss-name{font-family:var(--font-h);font-size:20px;color:var(--cream);letter-spacing:1px;margin-bottom:4px}
+.ss-desc{font-size:12px;color:var(--smoke);font-weight:300;line-height:1.55}
+.ss-price{font-size:14px;font-weight:700;color:var(--copper);margin-top:10px}
+
+/* barbers */
+.barbers-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;background:rgba(184,115,51,.1)}
+.barber-card{background:var(--charcoal-2);overflow:hidden;display:grid;grid-template-columns:220px 1fr;gap:0}
+.barber-img{height:260px;overflow:hidden;position:relative}
+.barber-img img{filter:grayscale(20%);transition:transform .5s,filter .4s}
+.barber-card:hover .barber-img img{transform:scale(1.04);filter:grayscale(0%)}
+.barber-info{padding:32px 28px;display:flex;flex-direction:column;justify-content:center}
+.barber-name{font-family:var(--font-h);font-size:28px;color:var(--cream);letter-spacing:2px;margin-bottom:4px}
+.barber-role{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--copper)}
+.barber-bio{font-size:13px;color:var(--smoke);font-weight:300;line-height:1.65;margin-top:10px}
+.barber-specs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.bs-tag{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border:1px solid rgba(184,115,51,.2);color:var(--copper);border-radius:2px}
+
+/* photo grid */
+.photo-grid{display:grid;grid-template-columns:repeat(4,1fr);height:320px;gap:2px}
+.pg-item{overflow:hidden;cursor:pointer}
+.pg-item img{filter:brightness(.8) saturate(.85);transition:transform .5s,filter .4s}
+.pg-item:hover img{transform:scale(1.06);filter:brightness(.95) saturate(1)}
+
+/* reviews */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev-card{background:var(--charcoal-2);border:1px solid rgba(184,115,51,.1);padding:24px;border-radius:2px;border-left:3px solid var(--copper)}
+.rs{color:var(--copper);font-size:12px;margin-bottom:10px}
+.rt{font-style:italic;color:var(--cream);font-size:14px;line-height:1.7;margin-bottom:16px;font-weight:300;opacity:.85}
+.rn{font-size:12px;font-weight:700;color:var(--cream);opacity:.7}
+.rc{font-size:10px;color:var(--copper);letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+
+/* cta */
+.cta{background:var(--copper);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.15) 0%,transparent 100%)}
+.cta-con{position:relative;z-index:1}
+
+@media(max-width:1024px){
+  .svc-strip{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr 1fr}
+  .barbers-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:1fr 1fr;height:auto}
+  .pg-item{height:180px}
+}
+@media(max-width:768px){
+  .barber-card{grid-template-columns:1fr}
+  .barber-img{height:240px}
+  .svc-strip{grid-template-columns:1fr 1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-con">
+    <div class="hero-inner">
+      <div class="hero-tag"><div class="htag-dot"></div><div class="htag-txt">Dennis Pritt Road · Nairobi · ⭐ 4.7 Stars</div></div>
+      <h1>LOOK<br/>YOUR <span class="hl">BEST.</span></h1>
+      <p class="hero-sub">Groomyard Barbershop — premium fades, beard trims, hot towel shaves, and head massages. A clean, professional, welcoming space for the modern Nairobi man.</p>
+      <div class="hero-acts">
+        <button class="btn-copper" onclick="go('contact')">Book Your Cut →</button>
+        <button class="btn-outline-cream" onclick="go('services')">Our Services</button>
+      </div>
+      <div class="hero-creds">
+        <div><div class="hc-n">4.7★</div><div class="hc-l">Google Rating</div></div>
+        <div><div class="hc-n">110+</div><div class="hc-l">Client Reviews</div></div>
+        <div><div class="hc-n">7</div><div class="hc-l">Days a Week</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES STRIP -->
+<div class="svc-strip fu">
+  <div class="ss-item"><div class="ss-icon">✂️</div><div class="ss-name">HAIRCUT & FADE</div><div class="ss-desc">Classic cuts, taper fades, skin fades, and buzz cuts. Precise and clean every time.</div><div class="ss-price">From KES 600</div></div>
+  <div class="ss-item"><div class="ss-icon">🪒</div><div class="ss-name">BEARD TRIM</div><div class="ss-desc">Shape, line, and define your beard. Hot towel and straight razor finish available.</div><div class="ss-price">From KES 400</div></div>
+  <div class="ss-item"><div class="ss-icon">💆</div><div class="ss-name">HEAD MASSAGE</div><div class="ss-desc">A proper head and scalp massage to go with your cut. Deeply relaxing.</div><div class="ss-price">From KES 300</div></div>
+  <div class="ss-item"><div class="ss-icon">🧴</div><div class="ss-name">HAIR WASH</div><div class="ss-desc">Shampoo, condition, and wash — the full fresh experience before your cut.</div><div class="ss-price">From KES 250</div></div>
+</div>
+
+<!-- WHY GROOMYARD -->
+<section class="sp" style="background:var(--charcoal)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
+      <div style="height:520px;overflow:hidden;border-radius:2px;position:relative" class="fu">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=80&fit=crop" alt="Barbershop interior"/>
+        <div style="position:absolute;bottom:24px;right:24px;background:var(--copper);padding:16px 20px;border-radius:2px;text-align:center">
+          <div style="font-family:var(--font-h);font-size:28px;color:#fff;letter-spacing:1px;line-height:1">COCO JAMBO<br/>GARDENS</div>
+          <div style="font-size:9px;color:rgba(255,255,255,.7);margin-top:4px;letter-spacing:1.5px;text-transform:uppercase">Dennis Pritt Road</div>
+        </div>
+      </div>
+      <div class="fu d1">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div style="width:24px;height:2px;background:var(--copper);flex-shrink:0;border-radius:1px"></div><div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--copper)">Why Groomyard</div></div>
+        <h2 style="font-family:var(--font-h);font-size:clamp(42px,5vw,64px);color:var(--cream);line-height:.92;letter-spacing:1px;margin-bottom:20px">THE <span style="color:var(--copper)">CRAFT</span><br/>MATTERS.</h2>
+        <p style="color:var(--smoke);font-size:15px;font-weight:300;line-height:1.85;margin-bottom:28px">Every barber at Groomyard is a craftsman. We take pride in every fade, every line, every edge — because looking your best isn't luck, it's skill. Located at Coco Jambo Gardens on Dennis Pritt Road, we're easy to reach and open every day.</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border:1.5px solid var(--copper);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">✂️</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:3px">Skilled, Patient Barbers</div><div style="font-size:13px;color:var(--smoke);font-weight:300">Our team listens to what you want and delivers it every time — no guessing.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border:1.5px solid var(--copper);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">🧼</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:3px">Hygienic & Professional</div><div style="font-size:13px;color:var(--smoke);font-weight:300">Clean tools, clean space, and a welcoming environment that respects every client.</div></div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:36px;height:36px;border:1.5px solid var(--copper);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0">💬</div>
+            <div><div style="font-size:14px;font-weight:700;color:var(--cream);margin-bottom:3px">Great Vibes & Conversation</div><div style="font-size:13px;color:var(--smoke);font-weight:300">More than a barbershop — a place to relax, decompress, and leave looking fresh.</div></div>
+          </div>
+        </div>
+        <div style="margin-top:32px"><button class="btn-copper" onclick="go('contact')">Book Your Cut →</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<div class="photo-grid">
+  <div class="pg-item"><img loading="lazy" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=75&fit=crop" alt="Barbershop"/></div>
+  <div class="pg-item"><img loading="lazy" src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=75&fit=crop" alt="Fade"/></div>
+  <div class="pg-item"><img loading="lazy" src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=400&q=75&fit=crop" alt="Beard trim"/></div>
+  <div class="pg-item"><img loading="lazy" src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=75&fit=crop" alt="Haircut"/></div>
+</div>
+
+<!-- REVIEWS -->
+<section class="sp" style="background:var(--charcoal-2)">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px" class="fu">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px"><div style="width:24px;height:2px;background:var(--copper);border-radius:1px"></div><div style="font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--copper)">Client Reviews</div><div style="width:24px;height:2px;background:var(--copper);border-radius:1px"></div></div>
+      <h2 style="font-family:var(--font-h);font-size:clamp(42px,5vw,64px);color:var(--cream);line-height:.92;letter-spacing:1px">WHAT CLIENTS SAY</h2>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card fu"><div class="rs">★★★★★</div><p class="rt">"Professional, clean, and very welcoming. The service is outstanding from start to finish. I had a great haircut and a fantastic massage. Very reasonable pricing."</p><div class="rn">Verified Client</div><div class="rc">Haircut + Massage</div></div>
+      <div class="rev-card fu d1"><div class="rs">★★★★★</div><p class="rt">"One of the top barbershops in Nairobi. The environment is neat and professional. Dozer Cuts pays close attention to what you ask for and consistently delivers clean, sharp results."</p><div class="rn">Verified Client</div><div class="rc">Fade + Beard</div></div>
+      <div class="rev-card fu d2"><div class="rs">★★★★★</div><p class="rt">"Great barber, nice shop. Quick service, good vibe. I got a precise cut that turned out exactly how I wanted — and I'm someone who is particular about my hair. Highly recommend."</p><div class="rn">Verified Client</div><div class="rc">Precision Cut</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="container cta-con fu">
+    <h2 style="font-family:var(--font-h);font-size:clamp(44px,6vw,80px);color:#fff;letter-spacing:2px;margin-bottom:12px">FRESH CUT.<br/>FRESH START.</h2>
+    <p style="color:rgba(255,255,255,.75);font-size:16px;font-weight:300;max-width:400px;margin:0 auto 32px;line-height:1.8">Book your appointment at Groomyard today. Walk-ins also welcome.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-outline-cream" style="background:#fff;color:var(--copper);border-color:#fff;font-size:13px" onclick="go('contact')">Book Your Cut →</button>
+      <a href="tel:+254700000000" class="btn-outline-cream">Call Us</a>
+    </div>
+  </div>
+</div>
+</template>
+
+<!-- ═══ SERVICES ═══ -->
+<template id="t-services">
+<style>
+.sv-hero{background:var(--charcoal-2);padding:140px 0 72px;position:relative;overflow:hidden;border-bottom:1px solid rgba(184,115,51,.1)}
+.sv-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 50%,rgba(184,115,51,.08) 0%,transparent 60%)}
+.bc{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:18px;cursor:pointer}
+.bc span{color:var(--copper)}
+.svc-list{display:flex;flex-direction:column;gap:1px;background:rgba(184,115,51,.1)}
+.svc-row{background:var(--charcoal-2);display:flex;align-items:center;gap:32px;padding:32px 36px;transition:background .2s}
+.svc-row:hover{background:var(--charcoal-3)}
+.svc-num{font-family:var(--font-h);font-size:44px;color:rgba(184,115,51,.2);line-height:1;flex-shrink:0;width:56px}
+.svc-body{flex:1}
+.svc-name{font-family:var(--font-h);font-size:24px;color:var(--cream);letter-spacing:1px;margin-bottom:4px}
+.svc-desc{font-size:13px;color:var(--smoke);font-weight:300;line-height:1.65}
+.svc-price{font-family:var(--font-h);font-size:24px;color:var(--copper);letter-spacing:1px;flex-shrink:0}
+</style>
+<div class="sv-hero">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="bc" onclick="go('home')">Home / <span>Services</span></div>
+    <h1 style="font-family:var(--font-h);font-size:clamp(56px,7vw,96px);color:var(--cream);line-height:.88;letter-spacing:3px;margin:10px 0 16px">OUR <span style="color:var(--copper)">SERVICES</span></h1>
+    <p style="color:var(--smoke);font-size:16px;font-weight:300;max-width:500px;line-height:1.8">Every service at Groomyard is done with care, craft, and precision — because we believe the details make the difference.</p>
+  </div>
+</div>
+<section style="background:var(--charcoal);padding:64px 0">
+  <div class="container">
+    <div class="svc-list fu">
+      <div class="svc-row"><div class="svc-num">01</div><div class="svc-body"><div class="svc-name">HAIRCUT — ALL STYLES</div><div class="svc-desc">Classic cuts, taper fades, skin fades, buzz cuts, Mohawks, and everything in between. Tell us what you want and we deliver it clean, precise, and sharp.</div></div><div class="svc-price">KES 600+</div></div>
+      <div class="svc-row"><div class="svc-num">02</div><div class="svc-body"><div class="svc-name">FADE — TAPER & SKIN</div><div class="svc-desc">Low, mid, or high fade — our barbers know how to blend properly. Taper fades, skin fades, burst fades. The cleanest edges in Nairobi.</div></div><div class="svc-price">KES 700+</div></div>
+      <div class="svc-row"><div class="svc-num">03</div><div class="svc-body"><div class="svc-name">BEARD TRIM & SHAPE</div><div class="svc-desc">Clean up the neckline, shape the cheek line, and define the beard properly. Full beard trim with liner and clippers for a sharp, fresh look.</div></div><div class="svc-price">KES 400+</div></div>
+      <div class="svc-row"><div class="svc-num">04</div><div class="svc-body"><div class="svc-name">HOT TOWEL SHAVE</div><div class="svc-desc">The old school classic — hot towel preparation, premium shave cream, straight razor precision, and aftershave finish. An experience, not just a shave.</div></div><div class="svc-price">KES 800+</div></div>
+      <div class="svc-row"><div class="svc-num">05</div><div class="svc-body"><div class="svc-name">HEAD & SCALP MASSAGE</div><div class="svc-desc">A deeply relaxing head and scalp massage — the perfect addition to any cut. Tension leaves with every pass. Our clients say it's the best part.</div></div><div class="svc-price">KES 300+</div></div>
+      <div class="svc-row"><div class="svc-num">06</div><div class="svc-body"><div class="svc-name">HAIR WASH & TREATMENT</div><div class="svc-desc">Shampoo, condition, and a proper scalp wash to go with your cut. Optional hair treatment available to strengthen and nourish the scalp.</div></div><div class="svc-price">KES 350+</div></div>
+      <div class="svc-row"><div class="svc-num">07</div><div class="svc-body"><div class="svc-name">FULL GROOM PACKAGE</div><div class="svc-desc">The works — haircut, fade, beard trim, hair wash, head massage, and hot towel finish. Walk out looking and feeling 100%.</div></div><div class="svc-price">KES 2,000+</div></div>
+    </div>
+    <div style="background:var(--charcoal-2);border:1px solid var(--border);padding:28px 32px;margin-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px" class="fu">
+      <div>
+        <div style="font-family:var(--font-h);font-size:22px;color:var(--cream);letter-spacing:1px">Walk-ins welcome · No appointment needed</div>
+        <div style="font-size:13px;color:var(--smoke);font-weight:300;margin-top:4px">Open 7 days · Dennis Pritt Road at Coco Jambo Gardens, Nairobi</div>
+      </div>
+      <button class="btn-copper" onclick="go('contact')">Book Ahead →</button>
+    </div>
+  </div>
+</section>
+</template>
+
+<!-- ═══ CONTACT ═══ -->
+<template id="t-contact">
+<style>
+.ct-hero{background:var(--charcoal-2);padding:140px 0 72px;position:relative;overflow:hidden;border-bottom:1px solid rgba(184,115,51,.1)}
+.ct-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%,rgba(184,115,51,.1) 0%,transparent 60%)}
+.bc{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(245,240,232,.3);margin-bottom:18px;cursor:pointer}
+.bc span{color:var(--copper)}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ct-info{background:var(--copper);padding:64px 52px}
+.ct-form{background:var(--charcoal-3);padding:64px 52px}
+.form-sub{width:100%;background:var(--copper);color:#fff;border:none;padding:14px;font-family:var(--font-b);font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s;margin-top:6px}
+.form-sub:hover{background:var(--copper-d)}
+@media(max-width:768px){
+  .ct-grid{grid-template-columns:1fr}
+  .ct-info,.ct-form{padding:44px 28px}
+}
+</style>
+<div class="ct-hero">
+  <div class="container" style="position:relative;z-index:1">
+    <div class="bc" onclick="go('home')">Home / <span>Book a Cut</span></div>
+    <h1 style="font-family:var(--font-h);font-size:clamp(56px,7vw,96px);color:var(--cream);line-height:.88;letter-spacing:3px;margin:10px 0 16px">BOOK YOUR <span style="color:var(--copper)">CUT</span></h1>
+    <p style="color:var(--smoke);font-size:16px;font-weight:300;max-width:500px;line-height:1.8">Walk-ins always welcome. Book ahead to skip the wait and secure your barber.</p>
+  </div>
+</div>
+<div class="ct-grid">
+  <div class="ct-info">
+    <h2 style="font-family:var(--font-h);font-size:38px;color:#fff;letter-spacing:2px;margin-bottom:12px">WE'RE READY FOR YOU</h2>
+    <p style="color:rgba(255,255,255,.75);font-size:15px;font-weight:300;line-height:1.8;margin-bottom:36px">Walk in any day or book ahead to make sure your preferred barber is available. We're here 7 days a week.</p>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div><div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)">Location</div><div style="font-size:14px;color:#fff;font-weight:400;margin-top:4px">Coco Jambo Gardens, Dennis Pritt Road, Nairobi</div></div>
+      <div><div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)">Hours</div><div style="font-size:14px;color:#fff;font-weight:400;margin-top:4px">Monday – Sunday: 10:00 AM – 8:00 PM</div></div>
+      <div><div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)">WhatsApp</div><div style="font-size:14px;color:#fff;font-weight:400;margin-top:4px">Message us to check barber availability or book your slot</div></div>
+    </div>
+    <div style="margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.2)">
+      <a href="https://maps.google.com/?q=Coco+Jambo+Gardens+Dennis+Pritt+Road+Nairobi" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,.15);color:#fff;border:1px solid rgba(255,255,255,.25);padding:11px 20px;font-family:var(--font-b);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:2px;text-decoration:none">Get Directions →</a>
+    </div>
+  </div>
+  <div class="ct-form">
+    <h3 style="font-family:var(--font-h);font-size:28px;color:var(--cream);letter-spacing:1px;margin-bottom:24px">BOOK YOUR SLOT</h3>
+    <form id="bkForm">
+      <div class="fr2">
+        <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" required/></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254 7XX XXX XXX" required/></div>
+      </div>
+      <div class="fg"><label>Service Required</label>
+        <select>
+          <option value="">Select service...</option>
+          <option>Haircut — All Styles</option>
+          <option>Fade — Taper or Skin</option>
+          <option>Beard Trim & Shape</option>
+          <option>Hot Towel Shave</option>
+          <option>Head & Scalp Massage</option>
+          <option>Hair Wash & Treatment</option>
+          <option>Full Groom Package</option>
+          <option>Not sure — advise me</option>
+        </select>
+      </div>
+      <div class="fr2">
+        <div class="fg"><label>Preferred Date</label><input type="date"/></div>
+        <div class="fg"><label>Preferred Time</label><input type="time" min="10:00" max="20:00"/></div>
+      </div>
+      <div class="fg"><label>Special Requests</label><textarea rows="3" placeholder="Specific barber request, style reference, or anything else we should know..."></textarea></div>
+      <button type="submit" class="form-sub">Confirm Booking →</button>
+      <p style="text-align:center;font-size:11px;color:var(--smoke);margin-top:10px">Walk-ins welcome too — no appointment needed</p>
+    </form>
+  </div>
+</div>
+</template>
+
+<!-- ═══ FOOTER ═══ -->
+<template id="t-footer">
+<footer>
+  <div class="container">
+    <div class="ft-grid fu">
+      <div>
+        <div class="ft-logo-name">GROOMYARD</div>
+        <div class="ft-logo-tag">Barbershop · Dennis Pritt Road · Nairobi</div>
+        <p class="ft-desc">Premium fades, beard trims, hot towel shaves, and head massages. Located at Coco Jambo Gardens, open 7 days. Walk-ins welcome.</p>
+      </div>
+      <div class="ft-col"><h4>Navigate</h4><ul><li><a onclick="go('home')">Home</a></li><li><a onclick="go('services')">Services</a></li><li><a onclick="go('contact')">Book a Cut</a></li></ul></div>
+      <div class="ft-col"><h4>Services</h4><ul><li>Haircuts & Fades</li><li>Beard Trim & Shape</li><li>Hot Towel Shave</li><li>Head Massage</li><li>Full Groom Package</li></ul></div>
+      <div class="ft-col"><h4>Find Us</h4><ul><li>Coco Jambo Gardens</li><li>Dennis Pritt Road, Nairobi</li><li>Open: 10am – 8pm Daily</li><li>Walk-ins Welcome</li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <p>© 2025 Groomyard Barbershop. All rights reserved.</p>
+      <p class="ft-credit">✦ Demo built by Visuoscope Limited</p>
+    </div>
+  </div>
+</footer>
+</template>
+
+<script>
+let cur='home';const app=document.getElementById('app');
+function go(page){
+  if(page===cur&&app.innerHTML){window.scrollTo({top:0,behavior:'smooth'});return}
+  app.classList.add('fading');
+  setTimeout(()=>{
+    cur=page;const tpl=document.getElementById('t-'+page);const ft=document.getElementById('t-footer');
+    if(!tpl)return;app.innerHTML=tpl.innerHTML+ft.innerHTML;app.classList.remove('fading');
+    window.scrollTo({top:0,behavior:'instant'});updateNav();initPage(page);revealImgs();
+  },200);
+}
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',window.scrollY>50||cur!=='home'));
+document.getElementById('hbg').addEventListener('click',()=>nav.classList.toggle('open'));
+function updateNav(){
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const m={home:0,services:1,contact:2};const links=document.querySelectorAll('.nav-links a');
+  if(links[m[cur]])links[m[cur]].classList.add('active');
+  if(cur==='home')nav.classList.toggle('solid',window.scrollY>50);else nav.classList.add('solid');
+}
+function initPage(page){
+  setTimeout(()=>{
+    const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('vis'),i*80)});},{threshold:.07});
+    document.querySelectorAll('.fu').forEach(el=>obs.observe(el));
+  },50);
+  if(page==='contact'){
+    const form=document.getElementById('bkForm');
+    if(form)form.addEventListener('submit',function(e){
+      e.preventDefault();const btn=this.querySelector('button[type="submit"]');
+      btn.textContent='✓ BOOKING CONFIRMED — see you soon!';btn.style.background='#1a6b30';btn.disabled=true;
+    });
+  }
+}
+function revealImgs(){
+  setTimeout(()=>{document.querySelectorAll('img').forEach(img=>{img.style.transition='opacity .4s';if(img.complete)img.style.opacity='1';else{img.style.opacity='0';img.onload=()=>img.style.opacity='1'}});},80);
+}
+go('home');
+</script>
+</body>
+</html>
